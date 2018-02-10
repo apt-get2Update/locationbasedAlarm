@@ -1,7 +1,9 @@
-import React from 'react';
+  import React from 'react';
 import { StyleSheet, Text, View ,StatusBar } from 'react-native';
 import MapView from './component/MapView';
 import SearchPlace from './component/SearchPlace';
+
+import RNAlarm from 'react-native-alarm';
 
 export default class App extends React.Component {
   state={
@@ -36,6 +38,16 @@ export default class App extends React.Component {
       let {longitude,latitude} = this.state.location;
       if(this.distance(latitude,longitude,location.latitude,location.longitude) < 1.2){
         alert('your reached the place');
+        RNAlarm.setAlarm('Meeting',
+        'Meeting with customer',
+        '', 
+        '',
+        () => {
+            console.log('hey')
+        },
+        () => {
+                console.log('pa')
+        });
       }
     }
 
